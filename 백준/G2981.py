@@ -9,6 +9,7 @@
 N개의 수가 주어졌을 때, 가능한 M을 모두 찾는 프로그램을 작성하시오.
 """
 
+import sys
 
 def GCD(abList):
     maxNum = max(abList)
@@ -46,7 +47,7 @@ def maxDivisor(newL):
 cnt = int(input())
 nList= []*100
 for i in range(cnt):
-    nList.append(int(input()))
+    nList.append(int(sys.stdin.readline()))
 
 output = []
 for i in range(min(nList)):
