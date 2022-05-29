@@ -9,22 +9,47 @@
 
 """ 시간이 너무 오래 소요됨!!! 다시 풀어보기"""
 
-import math
+# import math
 
-def sosuBool(num):
-    for z in range(2,(num)):
-        if num%z ==0:
-            return False
-    return True
+# def sosuBool(num):
+#     for z in range(2,(num)):
+#         if num%z ==0:
+#             return False
+#     return True
+
+# cnt = int(input())
+# for i in range(cnt):
+#     num = int(input())
+#     for j in range(num//2,1,-1):
+#         sosu = sosuBool(j)
+#         if sosu == True:
+#             revSosu = sosuBool(num-j)
+#             if revSosu == True:
+#                 print(j, num-j)
+#                 break
+
+
+
+"""
+에라토스테네스의 체로 다시 품
+"""
+
+sosu = [0]*10001
+x = int(len(sosu)**0.5)+1
+
+sosu[1] = 1
+for i in range(2, x+1):
+    if sosu[i] == 0:
+        for j in range(i+i, len(sosu), i):
+            sosu[j]=1
+
+
+# sieve = [i for i in range(2, len(sosu)) if sosu[i] == 0]
 
 cnt = int(input())
 for i in range(cnt):
     num = int(input())
     for j in range(num//2,1,-1):
-        sosu = sosuBool(j)
-        if sosu == True:
-            revSosu = sosuBool(num-j)
-            if revSosu == True:
-                print(j, num-j)
-                break
-
+        if sosu[j] == 0 and sosu[num-j] == 0:
+            print(j, num-j)
+            break
