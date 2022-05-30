@@ -19,3 +19,17 @@ for i in range(M):
         print(numDict[question])
     except:
         print(engDict[question])
+
+""" 
+isdigit() 이란 함수로 숫자인지 문자열인지 
+판단할 수 있는 method를 알게됨
+-> 근데 시간이 더 걸림 
+5356 -> 6928
+"""
+
+# for i in range(M):
+#     question = input()
+#     if question.isdigit():
+#         print(numDict[question])
+#     else:
+#         print(engDict[question])
