@@ -17,3 +17,8 @@ for i in range(M):
         cnt+=1
 
 print(cnt)
+
+"""
+s= set([input() for _ in range(N)])
+을 사용해서 한 줄로 표현한 것이 신기해서..
+"""
