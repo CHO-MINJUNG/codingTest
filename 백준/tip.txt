@@ -1,0 +1,6 @@
+list(map(int, input().split()))
+
+import sys
+sys.stdin.readline()
+sys.stdin.readline().strip()
+int(sys.stdin.readline())
