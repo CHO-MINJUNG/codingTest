@@ -4,3 +4,6 @@ import sys
 sys.stdin.readline()
 sys.stdin.readline().strip()
 int(sys.stdin.readline())
+
+## list 한 줄에 print
+print(' '.join(map(str,set(output))))
