@@ -7,3 +7,6 @@ int(sys.stdin.readline())
 
 ## list 한 줄에 print
 print(' '.join(map(str,set(output))))
+
+## 2차원 배열 초기화
+[[0]*(len(a)+1) for _ in range(len(b)+1)]
