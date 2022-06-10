@@ -30,6 +30,7 @@ def LCS(a, b):
             str = b[j-1] + str
             i-=1
             j-=1
+    print(lcs)
     print(str)
         
 A = input()
