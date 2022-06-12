@@ -5,6 +5,22 @@ LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열
 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.
 """
 
+def comparison(a, lcs):
+    str = ""
+    i=0
+    j=0
+    while(True):
+        if j==len(lcs):
+            str += a[i:]
+            print(str)
+            break
+        if a[i]==lcs[j]:
+            i+=1
+            j+=1
+        else:
+            str = str + a[i]
+            i+=1
+
 def LCS(a, b):
     num = 0
     str = ""
@@ -30,8 +46,9 @@ def LCS(a, b):
             str = b[j-1] + str
             i-=1
             j-=1
-    print(lcs)
     print(str)
+    comparison(a, str)
+    comparison(b, str)
         
 A = input()
 B = input()
