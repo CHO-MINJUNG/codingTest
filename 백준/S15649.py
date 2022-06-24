@@ -5,18 +5,18 @@
 1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열
 """
 
-def fact(num):
-    if num == 1:
-        return 1
-    return num * fact(num-1)
 
+
+def backTrack(N, M, arr):
+    if len(arr) == M:
+        print(' '.join(map(str,arr)))
+        return 
+    for i in range(1, N+1):
+        if i not in arr:
+            arr.append(i)
+            backTrack(N, M, arr)
+            arr.pop()
 
 N, M = map(int, input().split())
-num = fact(M-1)
 
-arr = [[0]*M for i in range(num*M)]
-for i in range(M):
-    for j in range(M):
-        for k in range(fact(i)*M):
-            arr[k]
-print(arr)
+backTrack(N, M, [])
