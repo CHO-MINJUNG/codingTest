@@ -19,7 +19,7 @@ if cnt>2:
     for i in range(3, cnt):
         result[0][i] = arr[i]+result[1][i-1]
         result[1][i] = arr[i]+max(result[0][i-2], result[1][i-2])
-    print(max(map(max, result)))
+    print(max(result[0][-1],result[0][-2],result[1][-1],result[1][-2]))
 else:
     print(sum(arr))
 print(result)

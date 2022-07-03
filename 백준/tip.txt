@@ -10,3 +10,14 @@ print(' '.join(map(str,set(output))))
 
 ## 2차원 배열 초기화
 [[0]*(len(a)+1) for _ in range(len(b)+1)]
+
+# 2차원 배열 max값 찾기
+min_value = max(map(max, vertices))
+
+# 시간 측정
+
+import time
+start_time = time.perf_counter()
+
+end_time = time.perf_counter()
+print(f"time elapsed : {int(round((end_time - start_time) * 1000))}ms")

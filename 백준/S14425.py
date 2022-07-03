@@ -15,6 +15,7 @@ for i in range(N):
 for i in range(M):
     if sys.stdin.readline() in Nset:
         cnt+=1
+        
 
 print(cnt)
 
