@@ -11,24 +11,29 @@ empty: 큐가 비어있으면 1, 아니면 0을 출력한다.
 front: 큐의 가장 앞에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
 back: 큐의 가장 뒤에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
 """
+
+"""
+그냥 list로 구현했더니 시간초과 뜸 ㅡㅡ 
+해결 방법은 deque - 양쪽 방향에서 추가 삭제가 용이해 append, pop이 압도적으로 빠르대
+"""
 import sys
+from collections import deque
 
 class Queue2:
     def __init__(self):
-        self.queue = []
+        self.queue = deque()
         self.cnt = 0
 
     def push(self, num):
         self.queue.append(num)
         self.cnt += 1
-        print(self.queue, self.cnt)
         
     def pop(self):
         if self.cnt ==0 :
             print(-1)
             return
         self.cnt -=1
-        print(self.queue.pop(-1))
+        print(self.queue.popleft())
 
     def size(self):
         print(self.cnt)
