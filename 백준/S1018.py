@@ -11,33 +11,43 @@ N, M = map(int, input().split())
 
 cnt = [0, 0]
 
-cntB = 0
-cntW = 0
+cntB = []
+cntW = []
+
+result = []*N
 
 for i in range(N):
-    row = input()
-    for j in range(M):
-        if j%2 == 0 and i%2==0:
-            if row[j]=="W":
-                cntB+=1
-            elif row[j]=="B":
-                cntW+=1
-        elif j%2 != 0 and i%2==0:
-            if row[j]=="W":
-                cntW+=1
-            elif row[j]=="B":
-                cntB+=1
-        elif j%2 == 0 and i%2!=0:
-            if row[j]=="W":
-                cntW+=1
-            elif row[j]=="B":
-                cntB+=1
-        elif j%2 != 0 and i%2!=0:
-            if row[j]=="W":
-                cntB+=1
-            elif row[j]=="B":
-                cntW+=1
-print(cntB, cntW)
+    result.append(list(input()))
+
+for i in range(N-7):
+    for j in range(M-7):
+        black = 0
+        white = 0
+        for x in range(8):
+            for y in range(8):
+                if y%2 == 0 and x%2==0:
+                    if result[i+x][j+y]=="W":
+                        black+=1
+                    elif result[i+x][j+y]=="B":
+                        white+=1
+                elif y%2 != 0 and x%2==0:
+                    if result[i+x][j+y]=="W":
+                        white+=1
+                    elif result[i+x][j+y]=="B":
+                        black+=1
+                elif y%2 == 0 and x%2!=0:
+                    if result[i+x][j+y]=="W":
+                        white+=1
+                    elif result[i+x][j+y]=="B":
+                        black+=1
+                elif y%2 != 0 and x%2!=0:
+                    if result[i+x][j+y]=="W":
+                        black+=1
+                    elif result[i+x][j+y]=="B":
+                        white+=1
+        cntB.append(black)
+        cntW.append(white)
+print(min(map(min, [cntB,cntW])))
 
 # for i in range(2):
 #     for j in range(N):
