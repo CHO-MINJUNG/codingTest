@@ -21,3 +21,10 @@ start_time = time.perf_counter()
 
 end_time = time.perf_counter()
 print(f"time elapsed : {int(round((end_time - start_time) * 1000))}ms")
+
+# list의 개수 셀 때 유용한 Counter 
+from collections import Counter
+
+# recursion error날 때
+import sys
+sys.setrecursionlimit(100000)
