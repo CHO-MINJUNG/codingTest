@@ -8,52 +8,65 @@
 
 N개의 수가 주어졌을 때, 가능한 M을 모두 찾는 프로그램을 작성하시오.
 """
-
-import sys
-
 def GCD(abList):
-    maxNum = max(abList)
-    minNum = min(abList)
-    return minNum, maxNum%minNum 
-
-def maxDivisor(newL):
-    if len(newL)==1:
-        return newL[0]
-    new=[]
-    if len(newL)%2 ==0:
-        for i in range(0,len(newL),2):
-            a, b = newL[i], newL[i+1]
-            gong= 1
-            while True:
-                if a==0 or b==0:
-                    gong = max([a,b])
-                    new.append(gong)
-                    break
-                a, b = GCD([a,b])
-        return maxDivisor(new)
-    else:
-        for i in range(0,len(newL)-1,2):
-            a, b = newL[i], newL[i+1]
-            gong= 1
-            while True:
-                if a==0 or b==0:
-                    gong = max([a,b])
-                    new.append(gong)
-                    break
-                a, b = GCD([a,b])
-            new.append(newL[-1])
-        return maxDivisor(new)    
-
+    funcList = abList[:]
+    while True:
+        funcList.sort()
+        if funcList[-1]==funcList[0]:
+            return funcList[0]
+        funcList[-1] = funcList[-1] - funcList[0]
+        
+    
 cnt = int(input())
-nList= []*100
-for i in range(cnt):
-    nList.append(int(sys.stdin.readline()))
+nList= [int(input()) for _ in range(cnt)]
+result = []
+minNum = min(nList)
+for i in range(minNum):
+    nList = [x+1 for x in nList]
+    num = GCD(nList)
+    if num!=1:
+        result.append(num)
+result = list(set(result))
+result.sort()
+print(' '.join(map(str, result)))
+# def maxDivisor(newL):
+#     if len(newL)==1:
+#         return newL[0]
+#     new=[]
+#     if len(newL)%2 ==0:
+#         for i in range(0,len(newL),2):
+#             a, b = newL[i], newL[i+1]
+#             gong= 1
+#             while True:
+#                 if a==0 or b==0:
+#                     gong = max([a,b])
+#                     new.append(gong)
+#                     break
+#                 a, b = GCD([a,b])
+#         return maxDivisor(new)
+#     else:
+#         for i in range(0,len(newL)-1,2):
+#             a, b = newL[i], newL[i+1]
+#             gong= 1
+#             while True:
+#                 if a==0 or b==0:
+#                     gong = max([a,b])
+#                     new.append(gong)
+#                     break
+#                 a, b = GCD([a,b])
+#             new.append(newL[-1])
+#         return maxDivisor(new)    
 
-output = []
-for i in range(min(nList)):
-    divisionList = [j-i for j in nList]
-    maxdivisor = maxDivisor(divisionList)
-    if maxdivisor != 1:
-        output.append(maxdivisor)
+# cnt = int(input())
+# nList= []*100
+# for i in range(cnt):
+#     nList.append(int(sys.stdin.readline()))
 
-print(' '.join(map(str,set(output))))
+# output = []
+# for i in range(min(nList)):
+#     divisionList = [j-i for j in nList]
+#     maxdivisor = maxDivisor(divisionList)
+#     if maxdivisor != 1:
+#         output.append(maxdivisor)
+
+# print(' '.join(map(str,set(output))))
