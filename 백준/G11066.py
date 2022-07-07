@@ -8,17 +8,18 @@
 """
 
 
-
 T = int(input())
 for _ in range(T):
     K = int(input())
     arr = list(map(int, input().split()))
     result = [[0]*(K+1) for _ in range(K+1)]
+    sumArr = [0, arr[0]]
+    for i in range(1,len(arr)):
+        sumArr.append(sumArr[i]+arr[i])
     for i in range(1, K):
-        result[i][i+1] = arr[i-1]+arr[i]
-    # gap = 1
-    # idx = 1
-    # while True:
-    #     if idx>=K:
-    #         break
-    #     result[idx][idx+gap]
+        for j in range(1, K-i+1):
+            result[j][j+i]=min([result[j][z]+result[z+1][j+i] for z in range(j, j+i)])+sumArr[j+i]-sumArr[j-1]
+    print(result[1][K])
+
+
+
