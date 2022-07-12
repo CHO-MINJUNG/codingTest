@@ -32,12 +32,14 @@ for i in range(N):
     if len(small)>len(big) and len(small)-len(big)>1:
         heapq.heappush(big, -heapq.heappop(small))
     elif len(big)>len(small):
-        heapq.heappush(small, heapq.heappop(big))
+        heapq.heappush(small, -heapq.heappop(big))
+    print(small, big)
     print(-small[0])
 
 
 
-
+# 2 
+# 3 4
 
 
 

@@ -28,3 +28,6 @@ from collections import Counter
 # recursion error날 때
 import sys
 sys.setrecursionlimit(100000)
+
+# 우선순위 큐
+heapq 라이브러리 이용하기
