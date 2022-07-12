@@ -7,34 +7,36 @@ N개의 정점과 M개의 간선으로 구성된 무방향 그래프(undirected 
 깊이 우선 탐색 의사 코드는 다음과 같다. 인접 정점은 오름차순으로 방문한다.
 """
 import sys
+sys.setrecursionlimit(100000)
 
 N, M, R = list(map(int, input().split()))
-arr = [[0]*(N+1) for _ in range(N+1)]
+arr = [[] for _ in range(N+1)]
 result = [0]*(N+1)
 result[R] = 1
 cnt=[2]
 for i in range(M):
     u, v = list(map(int, sys.stdin.readline().strip().split()))
-    arr[u][v] = 1
-    arr[v][u] = 1
+    arr[u].append(v)
+    arr[v].append(u)
 
-def iterator(start, L):
-    for i in range(start, len(L)):
-        if L[i]==0:
-            continue
+def iterator(L):
+    L.sort()
+    for i in L:
         if result[i] == 0:
             result[i] = cnt[0]
-            cnt[0]+=1
-            if i<R:
-                start = 1
-            else:
-                start = i
-            iterator(start , arr[i])
-        else:
-            return
+            cnt[0]+=1  
+            iterator(arr[i])
 
-iterator(1, arr[R])
+iterator(arr[R])
 for i in range(1, len(result)):
     print(result[i])
 
 # for i in range(len(arr[R])):
+# 6 7 1
+# 1 6
+# 1 2
+# 2 6
+# 2 3
+# 2 4
+# 3 5
+# 4 5
