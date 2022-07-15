@@ -33,7 +33,7 @@ for i in range(N):
         heapq.heappush(big, -heapq.heappop(small))
     elif len(big)>len(small):
         heapq.heappush(small, -heapq.heappop(big))
-    print(small, big)
+    # print(small, big)
     print(-small[0])
 
 
