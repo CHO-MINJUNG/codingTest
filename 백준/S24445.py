@@ -16,6 +16,74 @@ arr = [[] for _ in range(N+1)]
 result = [0]*(N+1)
 result[R]=1
 cnt=[2]
+import sys
+from collections import deque
+sys.setrecursionlimit(100000)
+
+N, M, R = list(map(int, input().split()))
+arr = [[] for _ in range(N+1)]
+result = [0]*(N+1)
+result[R]=1
+cnt=[2]
+
+for i in range(M):
+    u, v = list(map(int, sys.stdin.readline().strip().split()))
+    arr[u].append(v)
+    arr[v].append(u)
+
+deq=deque()
+def iterator(R):
+    arr[R].sort()
+    arr[R].reverse()
+    deq.append(R)
+    while deq:
+        u = deq.popleft()
+        arr[u].sort()
+        arr[u].reverse()
+        for i in arr[u]:
+            if result[i] == 0:
+                result[i] = cnt[0]
+                cnt[0]+=1  
+                deq.append(i)
+iterator(R)
+
+for i in range(1, len(result)):
+    print(result[i])
+v
+import sys
+from collections import deque
+sys.setrecursionlimit(100000)
+
+N, M, R = list(map(int, input().split()))
+arr = [[] for _ in range(N+1)]
+result = [0]*(N+1)
+result[R]=1
+cnt=[2]
+
+for i in range(M):
+    u, v = list(map(int, sys.stdin.readline().strip().split()))
+    arr[u].append(v)
+    arr[v].append(u)
+
+deq=deque()
+def iterator(R):
+    arr[R].sort()
+    arr[R].reverse()
+    deq.append(R)
+    while deq:
+        u = deq.popleft()
+        arr[u].sort()
+        arr[u].reverse()
+        for i in arr[u]:
+            if result[i] == 0:
+                result[i] = cnt[0]
+                cnt[0]+=1  
+                deq.append(i)
+iterator(R)
+
+for i in range(1, len(result)):
+    print(result[i])
+
 
 for i in range(M):
     u, v = list(map(int, sys.stdin.readline().strip().split()))
