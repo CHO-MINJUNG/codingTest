@@ -24,4 +24,7 @@ for i in range(dosi):
                 result[x][y]=result[x][i]+result[i][y]
 
 for i in result:
+    for j in range(len(i)):
+        if i[j]==inf:
+            i[j]=0
     print(' '.join(map(str,i)))
