@@ -8,35 +8,37 @@
 from collections import deque
 
 N, K = list(map(int, input().split()))
-result = [0]*(K*2)
-bool_result = [False]*(K*2)
-def expand(num, K):
-    if num==K:
-        return
-    result[num-1] +=1
-    result[num+1] +=1
-    
-
+result = [0]*(max(N,K)*2+1)
+bool_result = [False]*(max(N,K)*2+1)
 deq=deque()
 deq.append(N)
+
+def isEqual(u, K):
+    if u==K:
+        print(result[u])
+        deq.clear()
+        return True
+    return False
+
 while deq:
     u = deq.popleft()
-    print(u)
-    print(result)
+    check = False
     bool_result[u]=True
-    if u==K:
-        break
-    
-    if bool_result[u-1]==False:
+    if 2*u >= len(result) or u+1 >= len(result) or u-1 >= len(result):
+        continue
+    if bool_result[u-1]==False and check==False:
         result[u-1] = result[u]+1
+        check =isEqual(u-1, K)
         deq.append(u-1)
     
-    if bool_result[u+1]==False:
+    if bool_result[u+1]==False and check==False:
         result[u+1] = result[u]+1
+        check =isEqual(u+1, K)
         deq.append(u+1)
-    if bool_result[u]==False and 2*u<= len(result):
-        result[2*u] = result[u]
-        deq.append(2*u)
 
-print(result)
-print(result[K])
+    if bool_result[2*u]==False and check==False:
+        result[2*u] = result[u]
+        check =isEqual(2*u, K)
+        deq.append(2*u)
+    if check:
+        break
