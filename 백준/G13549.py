@@ -8,37 +8,24 @@
 from collections import deque
 
 N, K = list(map(int, input().split()))
-result = [0]*(max(N,K)*2+1)
-bool_result = [False]*(max(N,K)*2+1)
+MAX = 200001
+result = [0]*MAX
+bool_result = [False]*MAX
 deq=deque()
 deq.append(N)
 
-def isEqual(u, K):
-    if u==K:
-        print(result[u])
-        deq.clear()
-        return True
-    return False
 
 while deq:
     u = deq.popleft()
-    check = False
     bool_result[u]=True
-    if 2*u >= len(result) or u+1 >= len(result) or u-1 >= len(result):
-        continue
-    if bool_result[u-1]==False and check==False:
+    if bool_result[u-1]==False:
         result[u-1] = result[u]+1
-        check =isEqual(u-1, K)
         deq.append(u-1)
-    
-    if bool_result[u+1]==False and check==False:
+    if 0<= u+1 <MAX and bool_result[u+1]==False:
         result[u+1] = result[u]+1
-        check =isEqual(u+1, K)
         deq.append(u+1)
+    if 0<= 2*u < MAX and bool_result[2*u]==False:
+            result[2*u] = result[u]
+            deq.append(2*u)
 
-    if bool_result[2*u]==False and check==False:
-        result[2*u] = result[u]
-        check =isEqual(2*u, K)
-        deq.append(2*u)
-    if check:
-        break
+print(result[K]-1)
