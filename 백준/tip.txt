@@ -31,3 +31,7 @@ sys.setrecursionlimit(100000)
 
 # 우선순위 큐
 heapq 라이브러리 이용하기
+
+# deque
+from collections import deque
+deq = deque()

@@ -8,21 +8,42 @@
 
 10000개의 컴퓨터, 100000개의 관계
 """
-from os import popen
 import sys 
 from collections import deque
 
 N, M = list(map(int, sys.stdin.readline().strip().split()))
 numlist = [[] for i in range(N+1)]
-result = [0]*(N+1)
-result_bool = [True]*(N+1)
+result = []
+value = 0
+# result_bool = [True]*(N+1)
+
 for i in range(M):
     A, B = list(map(int, sys.stdin.readline().strip().split()))
     numlist[B].append(A)
-    result_bool[A]=False
-print(numlist)
-print(result_bool)
-res_list = [i for i, value in enumerate(result_bool) if value == True]
-print(res_list)
-for i in range(1, N+1):
-    numlist[i]
+    # result_bool[A]=False
+
+# res_list = [i for i, value in enumerate(result_bool) if value == True]
+
+def bfs(idx, deq, cnt):
+    if len(numlist[idx]) > 0:
+        cnt +=1
+        deq.extend(numlist[idx])
+        while deq:
+            new_idx = deq.popleft()
+            bfs(new_idx, deque(), cnt)
+    else:
+        num_list.append(cnt)
+        return cnt        
+# def dfs(idx):
+
+
+for i in range(1, N):
+    # node = num_list[i]
+    num_list = []
+    bfs(i, deque(), 0)
+    if value==max(num_list):
+        result.append(i)
+    elif value<max(num_list):
+        value = max(num_list)
+        result = [i]
+print(' '.join(map(str,result)))
