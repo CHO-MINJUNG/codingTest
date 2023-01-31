@@ -14,3 +14,4 @@ for i in range(H):
             cnt = 0
         print(cnt, end=" ")
     print()
+# git test
