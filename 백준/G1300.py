@@ -7,6 +7,10 @@
 # 4 8 12 16 20
 # 5 10 15 20 25
 # 1, ..., 
+k = 10
+left = 1 , right = 25
+mid = 13
+1, 13 -> 7
 
 # 2
 # 1, 2, 2, 4
@@ -22,5 +26,6 @@ import math
 k=7
 print(int(math.sqrt(k)),int(math.sqrt(k))+1)
 
-k=145
+k=145 12~13
+145-144 = 1 -> 
 print(int(math.sqrt(k)),int(math.sqrt(k))+1)
